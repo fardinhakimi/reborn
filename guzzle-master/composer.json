@@ -1,0 +1,28 @@
+{
+    "name": "fardin/guzzle-master",
+    "type": "project",
+    "require": {
+        "guzzlehttp/guzzle": "^7.0",
+        "nesbot/carbon": "^2.53",
+        "phpoffice/phpspreadsheet": "^1.18"
+    },
+    "scripts": {
+        "analyse": "phpstan analyse -l 8 ./src"
+    },
+    "autoload": {
+        "psr-4": {
+            "GuzzleMaster\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "fardinhakimi",
+            "email": "fardinhakimi@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^5.3",
+        "overtrue/phplint": "^2.0",
+        "phpstan/phpstan": "^0.12.99"
+    }
+}
