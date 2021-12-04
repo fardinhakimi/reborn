@@ -29,9 +29,12 @@ function handleRoom(socket, roomName) {
 
     if(roomSize < 2) {
         socket.join(roomName)
+       io.to(socket.id).emit('created', !room)
     } else {
         console.log('room is full. current size: ', roomSize)
     }
+    
+   
 }
 
 io.on('connection', (socket) => {
@@ -50,5 +53,13 @@ io.on('connection', (socket) => {
     socket.on('answer', function(answer, roomName){
         console.log('answer recieved. emitting to all clients ...')
         socket.to(roomName).emit('answer', answer)
+    })
+
+    socket.on('ready', function(roomName) {
+        socket.to(roomName).emit('ready')
+    })
+
+    socket.on('iceCandidate', function(candidate, roomName){
+        socket.to(roomName).emit('iceCandidate', candidate)
     })
 })
